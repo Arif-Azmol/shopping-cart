@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegate</title>
+</head>
+
+<body>
+    <div class="main">
+        <ul id="list">
+            <li class="item">Lorem, ipsum dolor.</li>
+            <li class="item">Asperiores, dolorem amet.</li>
+            <li class="item">Saepe, earum rem!</li>
+            <li class="item">Modi, impedit tempore?</li>
+            <li class="item">Expedita, voluptatem. Debitis!</li>
+        </ul>
+        <button id="addNow">Add Now</button>
+    </div>
+    <script>
+        var items = document.getElementsByClassName('item');
+        for (let i = 0; i < items.length; i++) {
+            var item = items[i];
+            item.addEventListener('click', function (event) {
+                event.target.parentNode.removeChild(event.target);
+            })
+        }
+
+        document.getElementById('addNow').addEventListener('click', function (event) {
+            var itemParent = document.getElementById('list');
+            var createTag = document.createElement('li');
+            createTag.innerText = 'Newly Added Text';
+            itemParent.appendChild(createTag);
+        })
+
+        document.getElementById('list').addEventListener('click', function () {
+            event.target.parentNode.removeChild(event.target);
+        })
+    </script>
+</body>
+
+</html>
